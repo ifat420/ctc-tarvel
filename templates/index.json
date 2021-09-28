@@ -2,8 +2,32 @@
   "sections": {
     "1632807089f4dd5f10": {
       "type": "service-time",
+      "blocks": {
+        "b16665de-f824-452f-ae5c-b13962c5af42": {
+          "type": "service-sec",
+          "settings": {
+            "serv_cont": "24\/7 Customer <br>Service"
+          }
+        },
+        "5127a07e-0d1b-4a39-bcb5-5e7c8e0b8289": {
+          "type": "service-sec",
+          "settings": {
+            "serv_cont": "6,000+ 5 star <br>Reviews"
+          }
+        },
+        "1461051d-d45a-4396-ae1e-be7be486345d": {
+          "type": "service-sec",
+          "settings": {
+            "serv_cont": "Government <br> Registerede"
+          }
+        }
+      },
+      "block_order": [
+        "b16665de-f824-452f-ae5c-b13962c5af42",
+        "5127a07e-0d1b-4a39-bcb5-5e7c8e0b8289",
+        "1461051d-d45a-4396-ae1e-be7be486345d"
+      ],
       "settings": {
-        "heading": "Section Service Time"
       }
     }
   },

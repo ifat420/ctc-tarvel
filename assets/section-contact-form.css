@@ -41,3 +41,78 @@
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+.field__input {
+  border-radius: 5px;
+  background: #fff;
+}
+
+.contact {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+}
+
+.contact-wraper {
+  background: #D8E7DC33;
+}
+
+.contact__button button {
+  border-radius: 10px;
+  width: 100%;
+  background: #3F5756;
+}
+
+.content-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.content-info-content {
+  display: flex;
+  align-items: center;
+}
+
+.content-info-txt {
+  margin-left: 2rem;
+  color: #333333;
+  font-family: 'EuclidCircularB';
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.spaced-section {
+  margin-bottom: 0 !important;
+}
+
+.page-head {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.page-heading-title {
+  color: #000030;
+  font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 2rem;
+  font-family: 'EuclidCircularB';
+}
+
+.page-head-info {
+  color: #4A5056;
+  font-size: 2rem;
+  font-family: 'EuclidCircularB';
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .page-heading-title {
+    font-size: 4rem;
+  }
+
+  .page-head-info {
+    color: #4A5056;
+    font-size: 1.8rem;
+  }
+  
+}
