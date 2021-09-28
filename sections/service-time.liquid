@@ -1,0 +1,48 @@
+{{ 'section-service-time.css' | asset_url | stylesheet_tag }}
+
+
+<div class="page-width">
+    <div class="srvctm">
+			{% for item in section.blocks %}
+				<div class="srcvsec">
+					{% if forloop.index == 1 %}
+						{% render 'twentryfourseven' %}
+					{% elsif forloop.index == 2 %}
+						{% render 'star-review' %}
+					{% else %}
+						{% render 'govt-register' %}		
+					{% endif %}
+					<h6 class="mdtxt">{{item.settings.serv_cont}}</h6>
+				</div>
+			{% endfor %}
+    </div>
+</div>
+    
+</div>
+
+{% schema %}
+    {
+        "name": "Service Time",
+
+        "blocks" : [
+          {
+						"type": "service-sec",
+						"name": "Service",
+						"settings": [
+							{
+								"type": "text",
+								"id" : "serv_cont",
+								"label" : "Secvice Content",
+								"default": "Service"
+							}
+						]
+          }
+        ],
+
+        "presets": [
+					{
+						"name": "Service Time"
+          }
+        ]
+    }
+{% endschema %}

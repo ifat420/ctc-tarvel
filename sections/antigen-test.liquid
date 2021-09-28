@@ -1,0 +1,81 @@
+{{ 'anyigen-test.css' | asset_url | stylesheet_tag }}
+
+
+<div class="pgbg">
+    <div class="atgtst">
+      <div class="atglft">
+        <h2 class="smtitle">{{section.settings.header}}</h2>
+        <p class="mtext">{{section.settings.desc}}</p>
+
+        <ul>
+          {% for list in section.blocks %}
+            <li>{{list.settings.t_lst}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="atgrht">
+        <img
+        srcset="{%- if section.settings.t_img.width >= 375 -%}{{ section.settings.t_img | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 750 -%}{{ section.settings.t_img | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1100 -%}{{ section.settings.t_img | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1500 -%}{{ section.settings.t_img | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1780 -%}{{ section.settings.t_img | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 2000 -%}{{ section.settings.t_img | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3000 -%}{{ section.settings.t_img | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3840 -%}{{ section.settings.t_img | img_url: '3840x' }} 3840w,{%- endif -%}"
+        sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.t_img | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ section.settings.t_img.alt | escape }}"
+        width="{{ section.settings.t_img.width }}"
+        height="{{ section.settings.t_img.width | divided_by: section.settings.t_img.aspect_ratio }}"
+        {% if section.settings.t_img != blank %}class="antigenimg"{% endif %}>
+      </div>
+    </div>
+</div>
+    
+</div>
+
+{% schema %}
+    {
+        "name": "Antigen Test",
+
+        "settings": [
+          {
+            "type": "text",
+            "id": "header",
+            "label": "Main Header"
+          },
+          {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description"
+          },
+          {
+            "type": "image_picker",
+            "id": "t_img",
+            "label": "Antigen Test Image"
+          }
+        ],
+
+        "blocks" : [
+          {
+						"type": "antigen-test-list",
+						"name": "Antigen Test List",
+						"settings": [
+							{
+								"type": "text",
+								"id" : "t_lst",
+								"label" : "Test List"
+							}
+						]
+          }
+        ],
+
+        "presets": [
+					{
+						"name": "Antigen Test"
+          }
+        ]
+    }
+{% endschema %}

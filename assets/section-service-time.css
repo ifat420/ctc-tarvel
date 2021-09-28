@@ -1,0 +1,31 @@
+/*******Base Css*****/
+.mdtxt{
+  font-size: 20px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+
+
+/*********Service Section********/
+.srvctm{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 30px;
+}
+
+.srcvsec{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #EAEBF7;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 25px 0;
+}
+
+.srcvsec .mdtxt{
+  margin-left: 30px;
+}
