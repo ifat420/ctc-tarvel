@@ -1,0 +1,173 @@
+{{ 'section-antigen-test-product.css' | asset_url | stylesheet_tag }}
+{{ 'product-item-info.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+    {% assign private_product = all_products[section.settings.private_product] %}
+    <div class="anttestpro">
+        <div class="anttestpro-view">
+            <img
+                class="anttestpro-view-img"
+                srcset="{%- if private_product.featured_image.width >= 375 -%}{{ private_product.featured_image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 750 -%}{{ private_product.featured_image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1100 -%}{{ private_product.featured_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1500 -%}{{ private_product.featured_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1780 -%}{{ private_product.featured_image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 2000 -%}{{ private_product.featured_image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 3000 -%}{{ private_product.featured_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 3840 -%}{{ private_product.featured_image | img_url: '3840x' }} 3840w,{%- endif -%}"
+                src="{{ private_product.featured_image | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ private_product.featured_image.alt | escape }}"
+                  >
+        </div>
+        <div class="anttestpro__desc"> 
+            <h2 class="anttestpro-title"> {{ private_product.title }} </h2>
+            <div class="pctt__desc"> {{ private_product.description }} </div>
+
+            <div class="anttestpro-blocks">
+                {% for item in section.blocks %}
+                    <div class="anttestpro-block-item">
+                        {% render 'icon-right' %}
+                        <div class="anttestpro-block-item-info">
+                            {{ item.settings.info_item }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="anttestpro-cer">
+                <div class="anttestpro-cer-item">
+                    {% render 'icon-testtube' %}
+                    <div class="anttestpro-cer-item-text">
+                        {{ section.settings.result_time }}
+                    </div>
+                </div>
+                <div class="anttestpro-cer-item">
+                    {% render 'icon-doc' %}
+                    <div class="anttestpro-cer-item-text">
+                        {{ section.settings.doc_sign }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="private__product">
+                <div class="private__product-info">
+                    <p class="pctt__text"> Number of packs </p>
+                    <div class="pctt__qantity">
+                        <button id="ant-quanity-btn-minus" class="pctt__qantity-btn">  {% render 'quantity-desc' %} </button>
+                        <div id="ant-hero-quanity" class="pctt__qantity-num"> 1 </div>
+                        <button id="ant-quanity-btn-plus" class="pctt__qantity-btn">  {% render 'quantity-inc' %} </button>
+                    </div>
+                </div>
+                <button id="ant__product-atc" class="private__product-atc"> Add to Basket for <span id="ant-product-total"> {{ private_product.price | money_without_trailing_zeros }} </span>  </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Antigen Test",
+    "settings": [
+        {
+            "type": "product",
+            "id": "private_product",
+            "label": "Select Product",
+            "info": "Antigen Test Product"
+        },
+        {
+            "type": "text",
+            "id": "result_time",
+            "label": "Result Time",
+            "default": "Results within <br> 20 minutes"
+        },
+        {
+            "type": "text",
+            "id": "doc_sign",
+            "label": "Doctor Sign",
+            "default": "Doctor-Signed Fit to Fly <br> Certificate"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Product Info",
+            "type": "product_info",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "info_item",
+                    "label": "Product Info Item",
+                    "default": "Government approved provider, Online verification and certification"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Antigen Test"
+        }
+    ]
+}
+{% endschema %}
+
+<script>    
+    (function() {
+        let productObject = {{ private_product | json }},
+            currency = {{ currency | json }},
+            plusBtn = document.getElementById('ant-quanity-btn-plus'),
+            minusBtn = document.getElementById('ant-quanity-btn-minus'),
+            quantityNum = document.getElementById('ant-hero-quanity'),
+            atcBtn = document.getElementById('ant__product-atc'),
+            totalDiv = document.getElementById('ant-product-total');
+
+        let currentQuentity = parseInt(quantityNum.innerText);
+
+        let quanityMac = function(value) {
+            quantityNum.innerText = value;
+            
+            let priceNow = parseFloat((value * productObject.price) / 100);
+            let priceWithCurrency = `£${priceNow}`;
+            totalDiv.innerText = priceWithCurrency;
+        }
+
+        plusBtn.addEventListener("click", function() {
+            currentQuentity++;
+            quanityMac(currentQuentity)
+        });
+
+        minusBtn.addEventListener("click", function() {
+            if (currentQuentity > 1) {
+                currentQuentity--;
+                quanityMac(currentQuentity)
+            } else {
+                quanityMac(currentQuentity);
+            }
+        });
+
+       
+        atcBtn.addEventListener('click', function() {
+            let productVariantID = productObject.variants[0].id;
+            // $(this).prop('disabled', true);
+    
+            // let clickedBtn = $(this);
+            
+            let formData = {};
+            formData.id = productVariantID;
+            formData.quantity = currentQuentity;
+    
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    // clickedBtn.prop('disabled', false);
+                    // jQuery('.js-drawer-open-right').click();
+                    window.location.href = "/cart";
+                }
+            }
+            xhr.open('POST', '/cart/add.js', true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            xhr.send(JSON.stringify(formData));
+        })
+        
+    })();
+</script>

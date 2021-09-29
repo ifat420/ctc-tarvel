@@ -1,4 +1,5 @@
 {{ 'section-private-travel-test.css' | asset_url | stylesheet_tag }}
+{{ 'product-item-info.css' | asset_url | stylesheet_tag }}
 
 <div class="pctt">
     {% assign private_product = all_products[section.settings.private_product] %}
@@ -90,7 +91,6 @@
             
             let priceNow = parseFloat((value * productObject.price) / 100);
             let priceWithCurrency = `£${priceNow}`;
-            console.log(priceWithCurrency);
             totalDiv.innerText = priceWithCurrency;
         }
 
@@ -111,7 +111,7 @@
        
         atcBtn.addEventListener('click', function() {
             let productVariantID = productObject.variants[0].id;
-            console.log(productVariantID)
+
     
             // $(this).prop('disabled', true);
     
