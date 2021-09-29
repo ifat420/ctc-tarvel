@@ -29,3 +29,34 @@
 .srcvsec .mdtxt{
   margin-left: 30px;
 }
+
+
+@media (max-width: 991px){
+  .twntf{
+    width: 40px;
+    height: 40px;
+  }
+
+  .str{
+    width: 70px;
+    height: 70px;
+  }
+
+  .srcvsec .mdtxt{
+    margin-left: 20px;
+  }
+
+  .mdtxt{
+    font-size: 18px;
+    line-height: 1.4;
+    color: #333333;
+  }  
+}
+
+@media (max-width: 870px){
+  .srvctm{
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 20px
+  }
+}
