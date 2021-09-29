@@ -4,5 +4,20 @@
 }
 .abtbnr{
   display: flex;
-  justify-content: space-between;
+  padding-top: 150px;
+  padding-bottom: 180px;
+  margin-bottom: -80px;
+}
+
+.bnrlft{
+  width: 50%;
+}
+
+.bnrrgt{
+  width: 50%;
+  text-align: right;
+}
+
+.atgtst{
+  padding-top: 150px !important;
 }

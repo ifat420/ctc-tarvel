@@ -1,11 +1,116 @@
 {{ 'section-aboutus.css' | asset_url | stylesheet_tag }}
+{{ 'section-service-time.css' | asset_url | stylesheet_tag }}
+{{ 'anyigen-test.css' | asset_url | stylesheet_tag }}
+
 
 
 <div>
   <div class="abt">
     <div class="abtbnr page-width">
-      <div class="bnrlft">asd</div>
-      <div class="bnrrgt">asd</div>
+      <div class="bnrlft">
+        <div class="lwrp">
+          <h1 class="bhd">{{section.settings.btitle}}</h1>
+          <p class="bdsc">{{section.settings.bdesc}}</p>
+        </div>
+      </div>
+      <div class="bnrrgt">
+        <img src="{{'abtbannerimg.png' | asset_url }}" alt="">
+      </div>
     </div>
   </div>
+
+  <div class="page-width">
+    <div class="srvctm">
+			{% for item in section.blocks %}
+				<div class="srcvsec">
+					{% if forloop.index == 1 %}
+						{% render 'twentryfourseven' %}
+					{% elsif forloop.index == 2 %}
+						{% render 'star-review' %}
+					{% else %}
+						{% render 'govt-register' %}		
+					{% endif %}
+					<h6 class="mdtxt">{{item.settings.serv_cont}}</h6>
+				</div>
+			{% endfor %}
+    </div>
+  </div>
+
+  <div class="">
+    <div class="atgtst">
+      <div class="atglft">
+        <h2 class="smtitle">{{section.settings.header}}</h2>
+        <p class="mtext">{{section.settings.desc}}</p>
+      </div>
+      <div class="atgrht">
+        <img
+        srcset="{%- if section.settings.t_img.width >= 375 -%}{{ section.settings.t_img | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 750 -%}{{ section.settings.t_img | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1100 -%}{{ section.settings.t_img | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1500 -%}{{ section.settings.t_img | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1780 -%}{{ section.settings.t_img | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 2000 -%}{{ section.settings.t_img | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3000 -%}{{ section.settings.t_img | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3840 -%}{{ section.settings.t_img | img_url: '3840x' }} 3840w,{%- endif -%}"
+        sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.t_img | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ section.settings.t_img.alt | escape }}"
+        width="{{ section.settings.t_img.width }}"
+        height="{{ section.settings.t_img.width | divided_by: section.settings.t_img.aspect_ratio }}"
+        {% if section.settings.t_img != blank %}class="antigenimg"{% endif %}>
+      </div>
+    </div>
 </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "btitle",
+      "label": "Banner Title",
+      "default": "About"
+    },
+    {
+      "type": "textarea",
+      "id": "bdesc",
+      "label": "Banner Description",
+      "default": "We’re an accredited seller of Covid-19 tests in <br> the UK, and partnered with the award winning <br> Corona Test Centre."
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Main Header"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "t_img",
+      "label": "About Us Image"
+    }
+  ],
+
+  "blocks" : [
+    {
+      "type": "service-sec",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "text",
+          "id" : "serv_cont",
+          "label" : "Secvice Content",
+          "default": "Service"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
