@@ -1,0 +1,66 @@
+.anttestpro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin: 15rem 0;
+}
+
+.anttestpro-view-img {
+    width: 100%;
+}
+
+.anttestpro-title {
+    font-size: 50px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.anttestpro-blocks {
+    margin-top: 4rem;
+}
+
+.anttestpro-block-item {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    margin-bottom: 1.8rem;
+}
+
+.anttestpro-block-item-info {
+    margin-left: 1.5rem;
+    font-weight: 400;
+    color: #4A5056;
+
+}
+
+.anttestpro-cer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 3rem 0;
+}
+
+.anttestpro-cer-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1.5rem;
+    color: #333333;
+    font-size: 16px;
+}
+
+.anttestpro-cer-item-text {
+    line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+    .anttestpro { 
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .anttestpro-cer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
