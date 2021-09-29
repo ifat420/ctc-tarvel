@@ -1,0 +1,64 @@
+.mainmenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.mainmenu-logo {
+    max-width: 300px;
+}
+
+.mainmenu-logo-image {
+    width: 100%;
+}
+
+.mainmenu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navmob {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 1rem;
+}
+
+.navmob-info-av {
+    color: #3F677D;
+    line-height: 1.5;
+}
+
+.mainmenu-list-item {
+    margin-right: 3rem;
+}
+
+.mainmenu-list-url {
+    text-decoration: none;
+    font-size: 16px;
+    color: #3F677D;
+}
+
+.mainmenu-list-url:hover {
+    color: #000000;
+}
+
+.navmob-info-num {
+    color: #000000;
+}
+
+.mainmenu-buy-now {
+    text-decoration: none;
+    color: #3F677D;
+    border: 1px solid #3F677D;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    transition: .2s ease-in-out;
+}
+
+.mainmenu-buy-now:hover {
+    color: #fff;
+    background: #3F677D;
+}

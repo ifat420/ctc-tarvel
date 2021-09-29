@@ -1,0 +1,68 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+
+<header>
+    <div class=" page-width">
+        <div class="mainmenu">
+            <div class="mainmenu-logo">
+                <a href="/">
+                    {% if section.settings.logo %}
+                        <img class="mainmenu-logo-image" src="{{ section.settings.logo | img_url: 'master' }}" alt="logo">
+                    {% else %}
+                        <img class="mainmenu-logo-image" src="{{ 'Group 6219.png' | | asset_img_url: 'master' }}" alt="logo">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="mainmenu-rgt">
+                <ul class="mainmenu-list">
+                    
+                    {% for link in linklists.main-menu.links %}
+                        <li class="mainmenu-list-item"> 
+                            <a class="mainmenu-list-url" href="{{ link.url }}"> {{ link.title }} </a>
+                        </li>
+                    {% endfor %}
+
+                    <li class="mainmenu-list-item"> 
+                        <a class="mainmenu-buy-now" href="{{ section.settings.buy_now_url }}"> Buy Now  </a>
+                    </li>
+                    <li class="mainmenu-list-mob">
+                        <a class="mainmenu-list-url" href="tel:+442039666694">
+                            <div class="navmob">
+                                {% render 'icon-phone' %}
+                                <div class="navmob-info">
+                                    <div class="navmob-info-av">Available 24/7</div>
+                                    <div class="navmob-info-num">0203 966 6694</div>
+                                </div>
+                            </div>
+                        </a>       
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Site Logo"
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Main Menu",
+            "default": "main-menu"
+        },
+        {
+            "type": "url",
+            "id": "buy_now_url",
+            "label": "Buy Now Url",
+            "default": "/"
+        }
+    ]
+}
+{% endschema %}
