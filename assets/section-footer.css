@@ -561,3 +561,21 @@ noscript .localization-selector.link {
   color: #333333;
   margin-bottom: 35px;
 }
+
+@media (max-width: 991px){
+  .ftmd{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 870px){
+  .footer{
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 500px){
+  .ftmd{
+    grid-template-columns: 1fr;
+  }
+}

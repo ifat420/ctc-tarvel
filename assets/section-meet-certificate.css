@@ -72,6 +72,53 @@
 }
 
 
+@media (max-width: 1050px){
+  .limg{
+    width: 100%;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 870px){
+  .mtcrtwrp{
+    flex-direction: column;
+    padding: 40px 0;
+  }
+  .limgwrp{
+    text-align: center;
+    margin-top: 0;
+  }
+  .limg{
+    width: 70%;
+    padding-right: 0;
+  }
+  .mcleft{
+    width: 100%;
+  }
+  
+  .mcright{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 575px){
+  .limg{
+    width: 100%;
+  }
+
+  .mdtitle{
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .smtext{
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
 
 
 

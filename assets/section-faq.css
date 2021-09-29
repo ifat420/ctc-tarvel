@@ -241,3 +241,23 @@
   line-height: 1.6;
   color: #4A5056;
 }
+
+
+@media (max-width: 870px){
+  .dropdown-faq .faq-info-wrapper{
+    padding: 0 10px;
+  }
+
+  .mtitle{
+    padding-left: 30px;
+  }
+
+  .dropdown-faq{
+    padding: 0 20px;
+    margin-bottom: 120px;
+  }
+
+  .pgwdt{
+    margin-top: 0;
+  }
+}

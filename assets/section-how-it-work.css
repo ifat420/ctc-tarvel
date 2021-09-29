@@ -29,3 +29,16 @@
   text-align: center;
   color: #4A5056;
 }
+
+
+@media (max-width: 870px){
+  .hiwrp {
+    padding-top: 60px;
+    padding-bottom: 190px;
+  }
+  .hiw{
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 40px;
+  }
+}

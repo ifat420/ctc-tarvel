@@ -23,6 +23,8 @@
   text-align: right;
 }
 
+
+
 .smtitle{
   font-size: 28px;
   line-height: 1.8;
@@ -67,4 +69,38 @@
   height: 10px;
   border-radius: 50%;
 
+}
+
+
+@media (max-width: 1050px){
+  .atgrht{
+    padding-left: 30px;
+  }
+  .antigenimg{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }  
+}
+
+@media (max-width: 870px){
+  .pgbg{
+    margin-top: 50px;
+  }
+
+
+  .atgtst{
+    flex-direction: column-reverse;
+    padding: 55px 1.5rem;
+  }
+
+  .atglft{
+    width: 100%;
+  }
+  
+  .atgrht{
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
 }
