@@ -1,0 +1,8 @@
+.abt{
+  background: rgba(216, 231, 220, 0.2);
+
+}
+.abtbnr{
+  display: flex;
+  justify-content: space-between;
+}

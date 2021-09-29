@@ -1,0 +1,89 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+
+<div class="pgwdt">
+  <h2 class="mtitle">{{section.settings.head}}</h2>
+  <div class="dropdown-faq">
+    <div class="faq-wrapper">
+      {% for item in section.blocks %}
+        <div class="faq-info-wrapper" >
+          <div data-w-id="d32f344e-80d0-ce6c-1333-6852f7950c74" class="faq-collapsed">
+            <div class="faq-heading-label">{{ item.settings.title }}</div>
+            <div class="faq-icon-wrapper">
+              <div class="line-horizontal-4" style="opacity: 1"></div>
+              <div class="line-vertical-2 line-absolut" style="opacity: 1"></div>
+            </div>
+          </div>
+          <div class="faq-expanded _01" style="display: none">
+            <div class="w-richtext">
+              {{ item.settings.desc }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  
+    </div>
+
+    <div class="rdbtnwrp">
+      <a href="#" class="rdbtn">Read more</a>
+    </div>
+  </div>
+
+
+
+
+
+{% schema %} 
+  { "name" : "Faqs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Header",
+        "default": "FAQ"
+      }  
+    ],
+
+    "blocks" : [ 
+      {
+        "type": "faq",
+        "name": "Faq",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description",
+            "default": "Description"
+          }
+        ]
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "Faqs"
+      }
+    ]
+  } 
+{% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  $(document).ready(function(){
+  $('.faq-collapsed').click(function(){
+      $(this).parent().toggleClass("lncls")
+      $(this).parents().children(".faq-expanded._01").slideToggle(500)
+      $(this).parents().children(".faq-expanded").toggleClass("active")
+      $(this).children(".faq-icon-wrapper").children(".line-vertical-2").toggleClass("lineShow")
+});
+
+});
+</script>
+

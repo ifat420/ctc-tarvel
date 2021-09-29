@@ -1,0 +1,88 @@
+{{ 'section-meet-certificate.css' | asset_url | stylesheet_tag }}
+
+<div class="mtcrtfct">
+  <div class="page-width">
+    <div class="mtcrtwrp">
+      <div class="mcleft">
+        <div class="limgwrp">
+          <img
+        srcset="{%- if section.settings.t_img.width >= 375 -%}{{ section.settings.t_img | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 750 -%}{{ section.settings.t_img | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1100 -%}{{ section.settings.t_img | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1500 -%}{{ section.settings.t_img | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 1780 -%}{{ section.settings.t_img | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 2000 -%}{{ section.settings.t_img | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3000 -%}{{ section.settings.t_img | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.t_img.width >= 3840 -%}{{ section.settings.t_img | img_url: '3840x' }} 3840w,{%- endif -%}"
+        sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.t_img | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ section.settings.t_img.alt | escape }}"
+        width="{{ section.settings.t_img.width }}"
+        height="{{ section.settings.t_img.width | divided_by: section.settings.t_img.aspect_ratio }}"
+        {% if section.settings.t_img != blank %}class="limg"{% endif %}>
+        </div>
+      </div>
+      <div class="mcright">
+        <div class="crtinf">
+          <h1 class="mdtitle">{{section.settings.mtitle}}</h1>
+          <p class="smtext">{{section.settings.mdesc}}</p>
+          <div class="docwrp">
+            <img class="docimg" src="{{section.settings.docimg | img_url: 'medium'}}" alt="Doctor">
+            <div class="dcwrp">
+              <h3 class="dtitle">{{section.settings.dname}}</h3>
+              <p class="ddec">{{section.settings.deg}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Meet Certificate",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "t_img",
+      "label": "Certificate Image"
+    },
+    {
+      "type": "text",
+      "id": "mtitle",
+      "label": "Main Title",
+      "default": "Meet Your Certificate"
+    },
+    {
+      "type": "textarea",
+      "id": "mdesc",
+      "label": "Main Description",
+      "default": "You will receive your Doctor-signed test result certificate <br> within three hours of verification."
+    },
+    {
+      "type": "image_picker",
+      "id": "docimg",
+      "label": "Doctor Image"
+    },
+    {
+      "type": "text",
+      "id": "dname",
+      "label": "Doctor Name"
+    },
+    {
+      "type": "textarea",
+      "id": "deg",
+      "label": "Designation"
+    }
+  ],
+  
+
+  "presets": [
+    {
+      "name": "Meet Certificate"
+    }
+  ]
+}
+{% endschema %}

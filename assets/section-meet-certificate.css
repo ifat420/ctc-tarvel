@@ -1,0 +1,77 @@
+.mtcrtfct{
+  background: rgba(216, 231, 220, 0.2);
+}
+
+.mtcrtwrp{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mcleft{
+  width: 50%;
+}
+
+.mcright{
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.limgwrp{
+  margin-top: -75px;
+}
+
+.docimg{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.docwrp{
+  display: flex;
+  align-items: center;
+  border-top: 2px solid#CADDE3;
+  padding: 15px 15px 0;
+}
+
+.mdtitle{
+  font-size: 36px;
+  line-height: 1.4;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.smtext{
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4A5056;
+  padding: 0 15px;
+}
+
+.dcwrp{
+  margin-left: 30px;
+}
+
+.dtitle{
+  font-size: 18px;
+  line-height: 1.4;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.ddec{
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4A5056;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+
+
+
