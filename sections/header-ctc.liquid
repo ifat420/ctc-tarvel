@@ -8,7 +8,7 @@
                     {% if section.settings.logo %}
                         <img class="mainmenu-logo-image" src="{{ section.settings.logo | img_url: 'master' }}" alt="logo">
                     {% else %}
-                        <img class="mainmenu-logo-image" src="{{ 'Group 6219.png' | | asset_img_url: 'master' }}" alt="logo">
+                        <img class="mainmenu-logo-image" src="{{ 'Group 6219.png' | asset_img_url: 'master' }}" alt="logo">
                     {% endif %}
                 </a>
             </div>
@@ -22,7 +22,7 @@
                     {% endfor %}
 
                     <li class="mainmenu-list-item"> 
-                        <a class="mainmenu-buy-now" href="{{ section.settings.buy_now_url }}"> Buy Now  </a>
+                        <a class="mainmenu-buy-now" href="{{ section.settings.buy_now_url }}"> Buy </a>
                     </li>
                     <li class="mainmenu-list-mob">
                         <a class="mainmenu-list-url" href="tel:+442039666694">
