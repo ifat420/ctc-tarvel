@@ -1,0 +1,138 @@
+{{ 'section-private-travel-test.css' | asset_url | stylesheet_tag }}
+
+<div class="pctt">
+    {% assign private_product = all_products[section.settings.private_product] %}
+
+    {% assign product_intro = private_product.description | split: "DESCRIPTION" | first | strip_html %}
+    {% assign product_desc = private_product.description | split: "DESCRIPTION" | last | strip_html %}
+
+    <div class="pctt__image">
+        <div class="pctt__rect">
+
+        </div>
+        <div class="pctt__image-inner">
+            <img
+                class="pctt__img"
+                srcset="{%- if private_product.featured_image.width >= 375 -%}{{ private_product.featured_image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 750 -%}{{ private_product.featured_image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1100 -%}{{ private_product.featured_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1500 -%}{{ private_product.featured_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 1780 -%}{{ private_product.featured_image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 2000 -%}{{ private_product.featured_image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 3000 -%}{{ private_product.featured_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if private_product.featured_image.width >= 3840 -%}{{ private_product.featured_image | img_url: '3840x' }} 3840w,{%- endif -%}"
+                src="{{ private_product.featured_image | img_url: '1500x' }}"
+                loading="lazy"
+                alt="{{ private_product.featured_image.alt | escape }}"
+                  >
+        </div>
+    </div>
+    <div class=pctt__details>
+        <div class="pctt__info-wpr">
+            <div class="pctt__info">
+                <h2 class="pctt__title"> {{ private_product.title }} </h2>
+                <div class="pctt__intro"> {{ product_intro }} </div>
+                <div class="pctt__desc"> {{ product_desc }} </div>
+                
+                <div class="private__product">
+                    <div class="private__product-info">
+                        <p class="pctt__text"> Number of packs </p>
+                        <div class="pctt__qantity">
+                            <div id="hero-quanity-btn-minus" class="pctt__qantity-btn">  {% render 'quantity-desc' %} </div>
+                            <div id="hero-quanity" class="pctt__qantity-num"> 1 </div>
+                            <div id="hero-quanity-btn-plus" class="pctt__qantity-btn">  {% render 'quantity-inc' %} </div>
+                        </div>
+                    </div>
+                    <button id="private__product-atc" class="private__product-atc"> Add to Basket for <span id="private-product-total"> {{ private_product.price | money_without_trailing_zeros }} </span>  </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% schema %}
+    {
+        "name": "Private Travel Test",
+        "settings": [
+            {
+                "type": "product",
+                "id": "private_product",
+                "label": "Feature Product",
+                "info": "Private Covid Travel Product"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Private Travel Test"
+            }
+        ]
+    }
+{% endschema %}
+
+<script>    
+    (function() {
+        let productObject = {{ private_product | json }},
+            currency = {{ currency | json }},
+            plusBtn = document.getElementById('hero-quanity-btn-plus'),
+            minusBtn = document.getElementById('hero-quanity-btn-minus'),
+            quantityNum = document.getElementById('hero-quanity'),
+            atcBtn = document.getElementById('private__product-atc'),
+            totalDiv = document.getElementById('private-product-total');
+
+        let currentQuentity = parseInt(quantityNum.innerText);
+
+        let quanityMac = function(value) {
+            quantityNum.innerText = value;
+            
+            let priceNow = parseFloat((value * productObject.price) / 100);
+            let priceWithCurrency = `£${priceNow}`;
+            console.log(priceWithCurrency);
+            totalDiv.innerText = priceWithCurrency;
+        }
+
+        plusBtn.addEventListener("click", function() {
+            currentQuentity++;
+            quanityMac(currentQuentity)
+        });
+
+        minusBtn.addEventListener("click", function() {
+            if (currentQuentity > 1) {
+                currentQuentity--;
+                quanityMac(currentQuentity)
+            } else {
+                quanityMac(currentQuentity);
+            }
+        });
+
+       
+        atcBtn.addEventListener('click', function() {
+            let productVariantID = productObject.variants[0].id;
+            console.log(productVariantID)
+    
+            // $(this).prop('disabled', true);
+    
+            // let clickedBtn = $(this);
+            
+            let formData = {};
+            formData.id = productVariantID;
+            formData.quantity = currentQuentity;
+    
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    // clickedBtn.prop('disabled', false);
+                    // jQuery('.js-drawer-open-right').click();
+                    window.location.href = "/cart";
+                }
+            }
+            xhr.open('POST', '/cart/add.js', true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            xhr.send(JSON.stringify(formData));
+        })
+        
+    })();
+</script>

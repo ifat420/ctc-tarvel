@@ -2305,6 +2305,9 @@ details-disclosure > details {
   }
 }
 
+:root {
+  --font-primary: 'EuclidCircularB';
+}
 
 .text-center {
   text-align: center;
