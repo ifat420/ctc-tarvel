@@ -53,12 +53,42 @@
     text-decoration: none;
     color: #3F677D;
     border: 1px solid #3F677D;
-    padding: 1.5rem;
+    padding: .7rem 2.5rem;
     border-radius: 1.2rem;
     transition: .2s ease-in-out;
+    display: inline-block;
 }
 
 .mainmenu-buy-now:hover {
     color: #fff;
     background: #3F677D;
+}
+
+.mainmenu-list-mob {
+    width: 145px;
+    margin-right: 2rem;
+}
+
+.icon-hamburger {
+    width: 20px;
+    height: 20px;
+}
+
+.hum-btn {
+    background: transparent;
+    border: none;
+    width: 4.5rem;
+    height: 4.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 1080px) {
+    .mainmenu-list-item {
+        display: none;
+    }
+
+    .hum-btn {
+        display: block;
+    }
 }

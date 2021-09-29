@@ -24,7 +24,7 @@
                     <li class="mainmenu-list-item"> 
                         <a class="mainmenu-buy-now" href="{{ section.settings.buy_now_url }}"> Buy </a>
                     </li>
-                    <li class="mainmenu-list-mob">
+                    <li class="mainmenu-list-item mainmenu-list-mob">
                         <a class="mainmenu-list-url" href="tel:+442039666694">
                             <div class="navmob">
                                 {% render 'icon-phone' %}
@@ -34,6 +34,33 @@
                                 </div>
                             </div>
                         </a>       
+                    </li>
+                    
+                    <li>
+                        <button id="hum-btn" class="hum-btn">
+                            {% render 'icon-hamburger' %}
+                        </button>
+                    </li>
+
+                    <li>
+                        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+                            {%- liquid
+                              if cart == empty
+                                render 'icon-cart-empty'
+                              else
+                                render 'icon-cart'
+                              endif
+                            -%}
+                            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                            {%- if cart != empty -%}
+                              <div class="cart-count-bubble">
+                                {%- if cart.item_count < 100 -%}
+                                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                                {%- endif -%}
+                                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                              </div>
+                            {%- endif -%}
+                          </a>
                     </li>
                 </ul>
             </div>

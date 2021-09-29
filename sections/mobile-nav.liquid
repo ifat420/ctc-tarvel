@@ -1,0 +1,53 @@
+
+
+{{ 'section-mobile-nav.css' | asset_url | stylesheet_tag }}
+
+<div class="mmb">
+    <div id="mobilemenu" class="mobilemenu">
+        {% include 'icon-close' %}
+        <ul class="mobilemenu__list">
+            {% for link in linklists['main-menu'].links %}
+                <li class="mobilemenu__list__item">
+                    {% if link.links != blank %}
+                        <span id="id-{{ forloop.index }}"
+                        data-subclass="msub-{{ forloop.index }}"
+                        data-sub="{{ link.links.size }}" class="mobilemenu__list__link msmn">
+                            <span> {{ link.title }} </span>
+                            {% include 'plus-icon' %}
+                        </span>
+                    {% else %}
+                        <a class="mobilemenu__list__link" href="{{ link.url }}">
+                            <span> {{ link.title }} </span>
+                        </a>
+                    {% endif %}
+
+                    <ul id="msub-{{ forloop.index }}" class="mobslist">
+                        {% for child in link.links %}
+                            <li class="mobslist__item">
+                                <a class="mobslist__link" href="{{ child.url }}"> {{ child.title }} </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+            <li class="mobilemenu__list-buynow"> 
+                <a class="mainmenu-buy-now mobilemenu__list-buynow-btn " href="{{ section.settings.buy_now_url }}"> Buy </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Mobile Nav",
+    "settings": [
+        {
+            "type": "url",
+            "id": "buy_now_url",
+            "label": "Buy Now Url",
+            "default": "/"
+        }
+    ]
+}
+{% endschema %}

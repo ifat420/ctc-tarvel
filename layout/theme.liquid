@@ -129,6 +129,7 @@
     </a>
 
     {% section 'header-ctc' %}
+    {% section 'mobile-nav' %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
@@ -161,6 +162,23 @@
       window.accessibilityStrings = {
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
+
+    
+      let humburgerBtn = document.getElementById('hum-btn'),
+          humburgerClose = document.getElementById('hum-close'),
+          mobileNav = document.getElementById('mobilemenu');
+      
+      humburgerBtn.addEventListener('click', function() {
+        mobileNav.classList.add('is-mobnav-acive');
+      })
+
+      humburgerClose.addEventListener('click', function() {
+        console.log('hello')
+        mobileNav.classList.remove('is-mobnav-acive');
+      })
+
+
+  
     </script>
 
     {%- if settings.predictive_search_enabled -%}
