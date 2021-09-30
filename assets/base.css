@@ -2316,3 +2316,7 @@ details-disclosure > details {
 .icon-phone {
   margin-top: 5px;
 }
+
+.m-0 {
+  margin: 0;
+}

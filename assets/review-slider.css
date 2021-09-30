@@ -1,0 +1,104 @@
+.review-sider {
+    background: #D8E7DC33;
+    padding: 0 1.5rem;
+}
+
+.review-sider-con {
+    max-width: 90vw;
+    margin: auto;
+}
+
+.icon-star, .icon-check {
+    width: 15px;
+    height: 15px;
+}
+
+.icon-star {
+    margin-right: 5px;
+}
+
+.img--icon{
+    width: 1rem;
+}
+.slider{
+    padding: 5rem 0;
+}
+.slider__star{
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.slider__title{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    column-gap: .5rem;
+    margin-bottom: 3rem;
+}
+.slider__heading{
+    display: flex;
+    column-gap: .5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+.text--content{
+    margin-bottom: 4rem;
+}
+.text--right{
+    text-align: right;
+}
+.slide__content{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: #fff;
+    padding: 3rem;
+    
+}
+
+.slick-prev {
+    left: -3% !important;
+    z-index: 1;   
+    
+}
+
+.slick-next {
+    right: -3% !important;
+    z-index: 1;
+
+    
+}
+.slick-next:before, .slick-prev:before {
+    font-size: 3rem;
+}
+
+.slide__item {
+    margin: 2rem;
+}
+
+.slick-next:before {
+    background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Capa_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%20512.002%20512.002%22%20style%3D%22enable-background%3Anew%200%200%20512.002%20512.002%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cg%3E%0A%09%09%3Cpath%20d%3D%22M388.425%2C241.951L151.609%2C5.79c-7.759-7.733-20.321-7.72-28.067%2C0.04c-7.74%2C7.759-7.72%2C20.328%2C0.04%2C28.067l222.72%2C222.105%0A%09%09%09L123.574%2C478.106c-7.759%2C7.74-7.779%2C20.301-0.04%2C28.061c3.883%2C3.89%2C8.97%2C5.835%2C14.057%2C5.835c5.074%2C0%2C10.141-1.932%2C14.017-5.795%0A%09%09%09l236.817-236.155c3.737-3.718%2C5.834-8.778%2C5.834-14.05S392.156%2C245.676%2C388.425%2C241.951z%22%2F%3E%0A%09%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A");
+    background-repeat: no-repeat;
+    color: transparent;
+}
+
+.slick-prev:before {
+    background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Capa_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%20240.823%20240.823%22%20style%3D%22enable-background%3Anew%200%200%20240.823%20240.823%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cg%3E%0A%09%3Cpath%20id%3D%22Chevron_Right%22%20d%3D%22M57.633%2C129.007L165.93%2C237.268c4.752%2C4.74%2C12.451%2C4.74%2C17.215%2C0c4.752-4.74%2C4.752-12.439%2C0-17.179%0A%09%09l-99.707-99.671l99.695-99.671c4.752-4.74%2C4.752-12.439%2C0-17.191c-4.752-4.74-12.463-4.74-17.215%2C0L57.621%2C111.816%0A%09%09C52.942%2C116.507%2C52.942%2C124.327%2C57.633%2C129.007z%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A");
+    background-repeat: no-repeat;
+    color: transparent;
+}
+
+.slick-slider {
+    padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .review-sider-con {
+        max-width: 80vw;
+    }
+
+    .slick-slider {
+        padding: 0 1rem;
+    }
+    
+}
